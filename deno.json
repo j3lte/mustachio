@@ -1,0 +1,50 @@
+{
+  "tasks": {
+    "check:license": "deno run -A ./scripts/check-license.ts --check",
+    "format": "deno fmt ./src/ ./test/*.ts ./test/helpers/*.ts",
+    "lint": "deno lint ./src/ ./test/*.ts ./test/helpers/*.ts",
+    "test": "deno test --allow-read --coverage=.coverage",
+    "coverage": "deno coverage .coverage --lcov --exclude=/src/node/ --exclude=/test/ --exclude=/scripts/ > ./.coverage/coverage.lcov",
+    "test:watch": "deno test --watch",
+    "update:version": "deno run --allow-read --allow-write ./scripts/update-version.ts",
+    "update:deno_deps": "deno run -A https://deno.land/x/udd/main.ts dev_deps.ts ./scripts/build-npm.ts ./src/lib/Pastebin.ts ./src/lib/Scraper.ts",
+    "update:deps": "deno task update:deno_deps",
+    "localTest": "deno run --allow-read --allow-write --allow-run ./scripts/watch-test.ts",
+    "clean": "rm -r ./coverage",
+    "npm": "deno run -A ./scripts/build-npm.ts"
+  },
+  "fmt": {
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "singleQuote": false,
+    "useTabs": false,
+    "proseWrap": "preserve",
+    "exclude": [
+      ".coverage/",
+      "npm/",
+      "./test/helpers/_files/",
+      ".github/",
+      "README.md"
+    ]
+  },
+  "lint": {
+    "rules": {
+      "include": [
+        "ban-untagged-todo",
+        "explicit-function-return-type"
+      ]
+    },
+    "exclude": [
+      "./_local_testing.ts",
+      "./test/helpers/_files/",
+      "npm/"
+    ]
+  },
+  "test": {
+    "exclude": [
+      "npm/",
+      "src/node/",
+      ".coverage/"
+    ]
+  }
+}
