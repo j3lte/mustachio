@@ -36,7 +36,7 @@ await build({
   },
   package: {
     // package.json properties
-    name: "mustachio",
+    name: "@j3lte/mustachio",
     version: Deno.args[0] || "1.0.0",
     description: "Mustache template engine for Deno/Node",
     license: "MIT",
