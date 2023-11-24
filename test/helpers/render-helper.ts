@@ -1,3 +1,5 @@
+// Copyright 2023 J.W. Lagendijk. All rights reserved. MIT license.
+
 const getDirPath = (): string => {
   const filePath = new URL(import.meta.url).pathname;
   const dirPath = filePath.split("/").slice(0, -1).join("/");
